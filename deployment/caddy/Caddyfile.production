@@ -1,0 +1,42 @@
+# Caddy Configuration for Frontend Production
+# Domain: your-production-domain.com (REPLACE THIS)
+
+your-production-domain.com {
+	# Automatic HTTPS via Let's Encrypt
+	# Caddy handles certificate provisioning and renewal automatically
+
+	# Logging
+	log {
+		output file /var/log/caddy/production-frontend.log
+		format json
+		level INFO
+	}
+
+	# Security headers
+	header {
+		# Prevent clickjacking
+		X-Frame-Options "SAMEORIGIN"
+		# XSS protection
+		X-Content-Type-Options "nosniff"
+		# Enable HSTS (HTTP Strict Transport Security)
+		Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+		# Remove server signature
+		-Server
+		# CSP (adjust based on your needs)
+		Content-Security-Policy "default-src 'self'"
+	}
+
+	# Reverse proxy to Next.js frontend
+	reverse_proxy localhost:8080 {
+		# Health check
+		health_uri /
+		health_interval 30s
+		health_timeout 5s
+
+		# Pass real client IP (X-Forwarded-For/Proto are default)
+		header_up X-Real-IP {remote_host}
+	}
+}
+
+# HTTP to HTTPS redirect (automatic)
+# Caddy handles this by default

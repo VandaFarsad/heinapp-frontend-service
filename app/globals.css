@@ -1,0 +1,114 @@
+@import "tailwindcss";
+@import "./shadcn-styles.css";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-shadows: "Shadows Into Light", cursive;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #fafafa;
+    --foreground: #171717;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* RADhaus Handwritten Font Style - Using Shadows Into Light */
+.radhaus-title {
+  font-family: var(--font-shadows), "Shadows Into Light", cursive;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+.radhaus-title-bold {
+  font-family: var(--font-shadows), "Shadows Into Light", cursive;
+  letter-spacing: 0.02em;
+  font-weight: 700;
+}
+
+.radhaus-subtitle {
+  font-family: var(--font-shadows), "Shadows Into Light", cursive;
+  font-weight: 400;
+}
+
+/* RADhaus Design System - Clean solid colors inspired by both illustrations */
+.radhaus-gradient {
+  background: #d4ed30;
+}
+
+.radhaus-gradient-light {
+  background: #f9fdf4;
+}
+
+.radhaus-gradient-medium {
+  background: #1f2937; /* Elegant dark gray-blue */
+}
+
+.radhaus-gradient-community {
+  background: #c8a2c8;
+}
+
+.radhaus-glass {
+  background: rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+/* Smooth Animations */
+.radhaus-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.radhaus-hover:hover {
+  transform: translateY(-2px);
+}
+
+/* RADhaus Image Container with Hover Animation */
+.radhaus-image-hover {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-origin: center;
+}
+
+.radhaus-image-hover:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 35px 60px -12px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Image Container */
+.radhaus-image-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 640px) {
+  .radhaus-image-container {
+    border-radius: 1rem;
+  }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(212, 237, 48, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c8a2c8;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #b19cd9;
+}

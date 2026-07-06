@@ -1,0 +1,22 @@
+services:
+  heinapp-frontend-service:
+    container_name: heinapp-frontend-service
+    image: heinapp-frontend-service
+    build:
+      context: ./
+      target: deps
+    volumes:
+      - .:/app
+      - /app/node_modules
+      - /app/.next
+    ports:
+      - "3000:3000"
+    environment:
+      NODE_ENV: development
+    command: pnpm run dev
+    networks:
+      - heinapp-network
+
+networks:
+  heinapp-network:
+    external: true
